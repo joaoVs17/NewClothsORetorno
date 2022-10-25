@@ -1,5 +1,5 @@
 from tkinter import N
-from django.shortcuts import render, redirect
+from django.shortcuts import HttpResponse, render, redirect
 from django.views import View
 #Contrib
 from django.contrib.auth import get_user_model, authenticate, login, logout
@@ -10,8 +10,10 @@ from django.core.files.storage import FileSystemStorage
 from enderecos.models import Endereco
 from lojas.models import Loja, Plano
 from colecoes.models import Colecao
-from pedidos.models import Pedido
+from pedidos.models import Item, Pedido
 from roupas.models import Categoria, Roupa
+
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def get_POST_form_fields(request, fields):
@@ -219,8 +221,26 @@ class MeusPacotes(View):
         if request.user.is_authenticated:
             pedido = Pedido.objects.filter()
         return render (request, 'meusPacotes.html')
+
     def post(self, request):
-        pass
+
+        # Receber e pegar parâmetros.
+        id = request.POST.get('product_id')
+        quantidade = request.POST.get('product_qnt')
+        tamanho = request.POST.get('product_size')
+        loja_id = request.POST.get('loja_id')
+        
+        roupa = Roupa.objects.get(pk=id)
+
+        item = Item.objects.create(
+            roupa=roupa,
+            tamanho=tamanho,
+            quantidade=quantidade,
+        )
+
+        print(item)
+        
+        return HttpResponse('Salve')
 
 class MeusPedidos(View):
     def get(self, request):

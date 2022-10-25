@@ -15,6 +15,7 @@ class StatusPedido(models.Model):
 
 class Item(models.Model):
     roupa = models.ForeignKey(Roupa, on_delete=models.CASCADE, related_name='item')
+    tamanho = models.CharField(max_length=2)
     quantidade = models.PositiveBigIntegerField(default=0)
     
     def __str__(self):
