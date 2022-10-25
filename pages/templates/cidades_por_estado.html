@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% block title %}Lojas Cadastradas{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/styleLojasC.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <!-- //////////////////////////// CABEÇARIO //////////////////////////// -->
+
+    <!--Header-->
+    {% header request %}
+    <script>
+        link = document.getElementById('lojas')
+        link.classList.add('active')
+    </script>
+     <!--Header-->
+
+    <!-- //////////////////////////// CONTEUDO //////////////////////////// -->
+    
+    <section>
+        <div class="boxCidades">
+            <p class="ttCidC"> Acre (AC)</p>
+            <div class="BoxLCC">
+                <p>Não há nehuma loja registrada nesta região</p>
+            </div>
+            <hr class="linhaCidC">
+
+            {% for estado in estados_com_loja %}
+                <p class="ttCidC">({{estado.estado}})</p>
+                <div class="BoxLCC" style="display:flex;flex-wrap:wrap;gap:2rem;">
+                    {% for endereco in enderecos %}
+                        {% if endereco.estado == estado.estado %}
+                            <a class="listCC" href="{% url 'cidade' endereco.cidade%}">
+                                <p>{{endereco.cidade}}</p>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <hr class="linhaCidC">
+            {% endfor %}
+            
+        </div>
+    </section>
+
+    <!-- //////////////////////////// REDAPE //////////////////////////// -->
+
+    {% footer %}
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+{% endblock content %}
+

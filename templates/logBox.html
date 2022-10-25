@@ -1,0 +1,21 @@
+{% load static %}
+
+<div class="logBOX" id="logBOX">
+    <a href="{% url 'perfil' %}">
+        {% if logged %}
+            <div class='userFT'>{{perfil}}</div>
+        {% endif %}
+    </a>
+    <div class="loginTXT">
+        {% if not logged %}
+            <a href="{% url 'login' %}">LOGIN</a>
+        {% elif logged %}
+            <a href="{% url 'sair' %}">SAIR</a>
+        {% endif %}  
+    </div>
+        {% if not logged %}
+            <a href="{% url 'login' %}"><img class="setinhaFT" src="{% static 'imagens/setinha.png'%}" alt=""></a>
+        {% elif logged %}
+            <a href="{% url 'sair' %}"><img class="setinhaFT" src="{% static 'imagens/setinha.png'%}" alt=""></a>
+        {% endif %}
+</div>

@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,500;1,600;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,500;1,600;1,800&display=swap');
+
+:root {
+    --LaranjaEscuro: #FD441B;
+    --LaranjaMedio: #FF6B18;
+    --LaranjaClaro: #FA861B;
+    --Amarelo: #FFA41C;
+    --AmareloClaro: #FFCF88;
+    --cinza: #595959;
+    --cinzaClaro: #9a9a9a;
+}
+
+.boxCidades {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 50px;
+}
+
+.ttCidC {
+    font-size: 50px;
+    color: #333333;
+}
+
+.linhaCidC {
+    height: 3px;
+    background-color: #333333;
+    margin-top: 10px;
+}
+
+.BoxLCC p {
+    font-size: 20px;
+    color: #333333;
+}
+
+.BoxLCC a:hover {
+    color: #333333;
+}
+
+.listCC {
+    font-size: 20px;
+    color: #333333;
+}
+
+/* lojas */
+
+.boxLojasCadNCidade {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lojBx {
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(209, 209, 209);
+    width: 30%;
+    height: 135px;
+    display: flex;
+    position: relative;
+    border-radius: 20px;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.lojBx:hover::before {
+    transform: scaleY(1);
+}
+
+.lojBx:hover::after {
+    transform: scaleX(1);
+}
+
+.lojBx a img {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.lojBx div {
+    margin-left: 10%;
+}
+
+.lojBx div button {
+    width: 120px;
+    height: 30px;
+    margin-top: 10px;
+    background-color: var(--LaranjaClaro);
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 10px;
+    font-family: Poppins;
+    letter-spacing: 2px;
+}
+
+.lojBx div button:hover {
+    background-color: #FD441B;
+}
+
+@media (max-width:1200px) {
+    .lojBx  {
+        width: 45%;
+    }
+}
+
+@media (max-width:750px) {
+    .lojBx  {
+        width: 100%;
+    }
+}
+
+.estados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+}
+
+.estados p a {
+    color: var(--cinza);
+    margin-right: 30px;
+}
+
+.img_loja_perfil {
+    width: 200px;
+    height: 200px;
+    border: none;
+    border-radius: 1000px;
+}
+
+.txt_loja_esp {
+    text-align: left;
+    display: flex;
+    margin-top: 50px;
+}
+
+.h22 {
+    font-family: Poppins;
+
+}
+
+.pp {
+    font-size: 12px;
+    font-family: Poppins;
+}
+
+.roupas_lojasC {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.roupas_lojasC img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center center;
+    border: none;
+    border-radius: 20px;
+}
+
+.roupas_lojasC p {
+    margin-top: 10px;
+    font-size: 15px;
+    font-family: Poppins;
+}
+
+@media (max-width: 992px) {
+    .roupas_lojasC img {
+        height: 450px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .roupas_lojasC img {
+        height: 600px; 
+    }
+
+    .container {
+        padding: 0 50px !important;
+    }
+}
+
+.und {
+    display: flex;
+    margin-top: -10px;
+}
+
+.quant {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quant p {
+    margin: 0;
+    color: var(--LaranjaClaro);
+}
+
+.quant_bnts button:hover {
+    background-color: var(--LaranjaClaro);
+    color: white;
+}
+
+.bnt_tamanho {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--LaranjaClaro);
+    color: #333333;
+    background-color: white;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-family: Poppins;
+    transition: background-color 0.3s;
+}
+
+.tem {
+    background-color: var(--LaranjaClaro);
+    color: white;
+}
+
+.nao_tem {
+    color: var(--cinzaClaro);
+    border: 2px solid var(--cinzaClaro);
+}
+
+.conttt {
+    width: 100%;
+    padding: 0%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addList {
+    padding: 5px 10px;
+    width: 100%;
+    background-color:#FA281B;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: Poppins;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.addList:hover {
+    background-color: #db1b11;
+}

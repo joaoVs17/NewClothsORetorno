@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% block title %}Editar Perfil{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/stylePerfil.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+
+{% header request %}
+
+
+<section>
+    <nav>
+        <input class="menu_user_bnt" type="checkbox">
+        {% menu_user request %}
+        <script>
+            link = document.getElementById('editar_perfil')
+            link.classList.add('active')
+        </script>
+    </nav>
+</section>
+
+
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="box-color-lr">
+                    {% if not request.user.foto_usuario %}
+                        <img src="{% static 'imagens/user.png' %}" id="foto" alt="">
+                    {% elif request.user.foto_usuario != None %}
+                        <img src="{{request.user.foto_usuario.url}}" id="foto">
+                    {% endif %}
+                    <label for="foto_usuario"><img src="{% static 'imagens/trocar-camera.png' %}" alt=""></label>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="box-color-cz">
+                    <form action="" class="form-bt" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input name="foto_usuario" type="file"  style="display:none;" id="foto_usuario" accept="image/*" >
+                        <div class="row">
+                            <div class="col-12">
+                                <p>DADOS PESSOAIS</p>
+                            </div>
+                            <div class="col-12">
+                                <input name="nome" class="inptDADOS" value="{{request.user.nome}}" placeholder="NOME" type="text" required>
+                            </div>
+                            <div class="col-12">
+                                <input name="telefone" class="inptDADOS" value="{{request.user.telefone}}" placeholder="TELEFONE" type="text" required>
+                            </div>
+                            <div class="col-12">
+                                <br>
+                                <p>LOCALIZAÇÂO</p>
+                            </div>
+                            <div class="col-5">
+                                <input name="cep" class="inptDADOS" placeholder="CEP" value="{{request.user.endereco.cep}}" type="text" name="cep2" id="cep"
+                                    onblur="pesquisacep(this.value)" required>
+                            </div>
+                            <div class="col-3">
+                                <input name="estado" class="inptDADOS" placeholder="ESTADO" value="{{request.user.endereco.estado}}" type="text" name="uf2" id="uf" required>
+                            </div>
+                            <div class="col-4">
+                                <input name="cidade" class="inptDADOS" placeholder="CIDADE" value="{{request.user.endereco.cidade}}" type="text" name="cidade2"
+                                    id="cidade" required>
+                            </div>
+                            <div class="col-5">
+                                <input name="rua" class="inptDADOS" placeholder="RUA" value="{{request.user.endereco.rua}}" type="text" name="rua2" id="rua" required>
+                            </div>
+                            <div class="col-3">
+                                <input name="bairro" class="inptDADOS" placeholder="BAIRRO" value="{{request.user.endereco.bairro}}" type="text" name="bairro2"
+                                    id="bairro" required>
+                            </div>
+                            <div class="col-4">
+                                <input name="numero" class="inptDADOS" placeholder="NUMERO" value="{{request.user.endereco.numero}}" type="text" name=""
+                                    id="bairro" required>
+                            </div>
+                            <script src="{% static 'script/locate.js' %}"></script>
+                        </div>
+                        <br>
+                        <div class="buttons_user_edd">
+                            <button>CONFIRMAR ALTERAÇÕES</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% footer %}
+
+<script src="{% static 'script/editar.js'%}" ></script>
+
+{% endblock content %}
+
+   

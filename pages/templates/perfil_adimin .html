@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Perfil Admistrator: {{loja.nome_loja}}{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/stylePerfil.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% header request %}
+
+<section>
+    <nav>
+        <input class="menu_user_bnt" type="checkbox">
+        <ul class="menu-user">
+            <li><a href="{% url 'perfil_loja'%}">Informações da loja</a></li>
+            <li><a class="active" href="{% url 'perfil_admin' %}">Perfil do adiministrador</a></li>
+            <li><a href="{% url 'editar_perfil_admin'%}">Editar Perfil</a></li>
+            <li><a href="{% url 'minhas_colecoes'%}">Minhas coleções</a></li>
+            <li><a href="meus_pacotes.html">Meus pacotes</a></li>
+        </ul>
+    </nav>
+</section>
+
+
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="box-color-lr">
+                    {% if request.user.foto_usuario %}
+                        <img src="{{request.user.foto_usuario.url}}" alt="">
+                    {% else %}
+                        <img src="{% static 'imagens/user2.png'%}">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="box-color-cz">
+                    <div>
+                        <h5>Informações de contato</h5>
+                    </div>
+                    <hr>
+                    <div>
+                        <h3>Nome</h3>
+                        <p>{{request.user.nome}}</p>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>{{request.user.email}}</p>
+                    </div>
+                    <div>
+                        <h3>Telefone</h3>
+                        <p>{{request.user.telefone}}</p>
+                    </div>
+                    <div>
+                        <h3>CEP</h3>
+                        <p>{{request.user.cep}}</p>
+                    </div>
+                    <div class="buttons_user_edd">
+                        <a href="{% url 'editar_perfil_admin'%}"><button>Editar Perfil</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+{% footer %}
+{% endblock content %}
+
+
+    

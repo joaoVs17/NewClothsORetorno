@@ -1,0 +1,658 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,500;1,600;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,500;1,600;1,800&display=swap');
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: Inknut;
+}
+
+:root {
+    --LaranjaEscuro: #FD441B;
+    --LaranjaMedio: #FF6B18;
+    --LaranjaClaro: #FA861B;
+    --Amarelo: #FFA41C;
+    --AmareloClaro: #FFCF88;
+    --cinza: #595959;
+}
+
+/* MENU */
+
+.menu {
+    background: rgb(253, 68, 27);
+    background: linear-gradient(90deg, rgba(253, 68, 27, 1) 0%, rgba(255, 164, 28, 1) 22%, rgba(255, 107, 24, 1) 47%, rgba(250, 134, 27, 1) 66%, rgba(255, 164, 28, 1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    font-size: 10px;
+    height: 35px;
+    margin: 0%;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+}
+
+.menu .active {
+    text-decoration: none;
+    background: #fff;
+    color: var(--cinza);
+}
+
+
+.menu li a:hover {
+    background: #fff;
+    color: var(--cinza);
+    transition: all 0.3s;
+}
+
+/* BARRA DE PESQUISA */
+
+#divBusca {
+    border: none;
+    margin: 0;
+    margin-top: 30px;
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#divBusca button {
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border: none;
+    border-style: none;
+    background-color: var(--LaranjaClaro);
+    outline: none;
+}
+
+#divBusca img {
+    width: 25px;
+    margin-top: 3px;
+}
+
+#txtBusca {
+    float: left;
+    border: none;
+    border: solid 2px;
+    border-color: var(--AmareloClaro);
+    padding-left: 15px;
+    font-size: 10px;
+    height: 36px;
+    width: 100%;
+    outline: none;
+    border-radius: 10px 0 0 10px;
+    border-right: none;
+}
+
+/* Logo e User */
+
+.imgLogo {
+    width: 127px;
+}
+
+/* login */
+
+.userFT {
+    width: 60px;
+    height: 60px;
+    background-color: var(--LaranjaEscuro);
+    font-size: 25px;
+    color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 1000px;
+}
+
+.logBOX a:hover {
+    text-decoration: none;
+}
+
+.userFT img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.setinhaFT {
+    margin-left: 5px;
+    width: 20px;
+}
+
+.logBOX {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-top: 20px;
+    margin-left: 100%;
+    padding-right: 20px;
+}
+
+.loginTXT {
+    margin-left: 10px;
+    font-size: 70%;
+    font-family: Poppins;
+}
+
+.loginTXT a {
+    letter-spacing: 2px;
+    color: #595959;
+}
+
+.loginTXT a:hover {
+    text-decoration: none;
+    color: #383838;
+}
+
+/* anuncios */
+
+.anuncio-propaganda img {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Destaques */
+
+.detaques {
+    width: 100%;
+}
+
+.ropa {
+    width: 100%;
+    height: 256px;
+    object-fit: cover;
+}
+
+.ropa:hover {
+    width: 102%;
+    height: 260px;
+    margin-left: -1%;
+    margin-top: -4px;
+    transition: all 0.3s;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 40px;
+    text-align: center;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.h3 {
+    font-size: 30px;
+    color: #595959;
+    margin-bottom: 0;
+    text-align: center;
+    font-family: Poppins;
+    margin-top: -30px;
+}
+
+.bntROPA {
+    outline: none;
+    width: 100%;
+    height: 31px;
+    border: none;
+    background-color: var(--LaranjaClaro);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.bntROPA:focus {
+    outline: none;
+}
+
+.bntROPA:hover {
+    background-color: #d56d0b;
+}
+
+.bntROPA-mx {
+    outline: none;
+    width: 100%;
+    height: 66px;
+    border: none;
+    background-color: var(--LaranjaEscuro);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    cursor: pointer;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+
+.bntROPA-mx:focus {
+    outline: none;
+}
+
+.bntROPA-mx:hover {
+    background-color: #c73a0b;
+}
+
+.bntROPA-le {
+    outline: none;
+    width: 100%;
+    height: 31px;
+    border: none;
+    background-color: var(--LaranjaEscuro);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.bntROPA-le:focus {
+    outline: none;
+}
+
+.bntROPA-le:hover {
+    background-color: #cb300d;
+}
+
+.bntROPA-ar {
+    outline: none;
+    width: 100%;
+    height: 31px;
+    border: none;
+    background-color: var(--Amarelo);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.bntROPA-ar:focus {
+    outline: none;
+}
+
+.bntROPA-ar:hover {
+    background-color: #df8939;
+}
+
+/* LOJAS CADASTRADAS */
+
+.boxLOJAS {
+    width: 100%;
+    height: 228px;
+    background: #ebebeb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+}
+
+.boxLOJAS:after,
+.boxLOJAS::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: transform .3s ease-in-out;
+}
+
+.boxLOJAS::before {
+    border-left: 2px solid #333333;
+    border-right: 2px solid #333333;
+    transform: scaleY(0);
+}
+
+.boxLOJAS::after {
+    border-top: 2px solid #333333;
+    border-bottom: 2px solid #333333;
+    transform: scaleX(0);
+}
+
+.boxLOJAS:hover::before {
+    transform: scaleY(1);
+}
+
+.boxLOJAS:hover::after {
+    transform: scaleX(1);
+}
+
+.boxLOJAS img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100px;
+}
+
+.boxLOJAS h2 {
+    letter-spacing: 2px;
+    margin-top: 10px;
+    font-weight: 300;
+    font-size: 75%;
+    line-height: 31px;
+    font-weight: 700;
+    /* identical to box height */
+
+    text-transform: uppercase;
+
+    color: #333333;
+}
+
+.boxLOJAS p {
+    position: absolute;
+    bottom: 3px;
+    color: #1c1c1c;
+}
+
+/* COLEÇOES */
+
+.colecao {
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.colecao:hover {
+    width: 102%;
+    height: 320px;
+    margin-left: -1%;
+    margin-top: -10px;
+    object-fit: cover;
+    transition: all 0.3s;
+}
+
+/* rodape */
+
+.rodapeBOX {
+    width: 100%;
+    background-color: var(--LaranjaMedio);
+    height: 250px;
+    margin-top: 50px;
+}
+
+.rodapeLinhaMn {
+    width: 100%;
+    background-color: var(--LaranjaClaro);
+    height: 10px;
+}
+
+.rodapeLinhaPt {
+    width: 100%;
+    background-color: #333333;
+    height: 50px;
+    padding: 15px;
+}
+
+.rodapeLinhaPt p {
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-left: 30px;
+}
+
+/* elementos rodape */
+
+.circulo-branco {
+    background: #FFFFFF;
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+    margin-top: 25px;
+}
+
+.circulo-branco img {
+    width: 80%;
+    margin-top: 20%;
+    margin-left: 10%;
+}
+
+.ttRodape {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.txRodape {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.txRodape a {
+    text-decoration: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    text-transform: capitalize;
+
+    color: #FFFFFF;
+}
+
+.txRodape a:hover {
+    text-decoration: none;
+    color: white;
+    text-decoration: underline;
+}
+
+.imgBoxCircleW {
+    margin-top: 80px;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 100px;
+    background-color: white;
+}
+
+.igmIconRodape {
+    width: 30px;
+    height: 30px;
+}
+
+.bntRodape {
+    width: 100%;
+    height: 50px;
+    border: none;
+    background: #333333;
+    border-radius: 100px;
+    margin-top: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.bntRodape:hover {
+    background: #1c1c1c;
+}
+
+.bntRodape:focus {
+    outline: none;
+}
+
+@media (max-width: 500px) {
+    .colecao {
+        width: 100%;
+        height: 210px;
+    }
+
+    .colecao:hover {
+        width: 102%;
+        height: 220px;
+        margin-left: -1%;
+        margin-top: -10px;
+        object-fit: cover;
+    }
+}
+
+.link_lojas:hover {
+    text-decoration: none;
+}
+
+@media (max-width: 800px) {
+    .loginTXT {
+        display: none;
+    }
+}
+
+.box-preco {
+    width: 100%;
+    background-color: #f1f1f1;
+    margin-top: 40px;
+    border: none;
+    border-radius: 5px;
+    padding: 0 40px;
+    padding-bottom: 30px;
+}
+
+.card-preco {
+    width: 100%;
+    margin-top: 30px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding-bottom: 30px;
+}
+
+.card-preco h1 {
+    font-size: 20px;
+    margin-top: 30px;
+    font-family: Poppins;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+.card-preco hr {
+    margin: 0;
+}
+
+.card-preco h2 {
+    text-align: center;
+    font-size: 30px;
+    color: var(--LaranjaMedio);
+    font-weight: 600;
+    margin-top: -20px;
+    font-family: Poppins;
+}
+
+.card-preco h3 {
+    font-size: 13px;
+    color: #595959;
+    text-align: center;
+    font-family: Poppins;
+}
+
+.card-preco div {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 5px 20px;
+}
+
+.card-preco div p {
+    margin: 5px 0;
+    margin-left: 10px;
+    font-family: Poppins;
+    font-size: 12px;
+    color: #595959;
+}
+
+.card-preco div img {
+    width: 30px;
+    height: 30px;
+}
+
+.card-preco a button {
+    width: 60%;
+    margin: 0 20%;
+    height: 40px;
+    border: none;
+    background-color: var(--LaranjaClaro);
+    border-radius: 5px;
+    font-family: Poppins;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: white;
+    font-weight: 700;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.card-preco a button:hover {
+    background-color: var(--LaranjaMedio);
+}

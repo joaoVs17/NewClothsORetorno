@@ -1,0 +1,38 @@
+{% load static %}
+{% load post_tags %}
+
+<header>
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'home'%}" id="home" class="">Home</a></li>
+            <li><a href="{% url 'lojas_cadastradas' %}" id="lojas" class="">Lojas Cadastradas</a></li>
+            <li><a href="{% url 'em_breve' %}" class="">Coleções em Alta</a></li>
+            <li><a href="{% url 'em_breve' %}" class="">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- ROW do Menu -->
+        <div class="row">
+            <div class="col-3 col-sm-3 col-mb-2 col-lg-2 col-xl-2 align-items-center d-none d-lg-block">
+                <img class="imgLogo" src="{% static 'imagens/CLOTHS ICON.png' %}" alt="">
+            </div>
+            <!-- Culuna barra de Pesquisa -->
+            <div class="col-7 col-sm-7 col-mb-7 col-lg-7 col-xl-7">
+                {% barra_pesquisa request %}
+            </div>
+            <!--carrinho-->
+            <div class="col-2">
+                <a href="{% url 'meus_pacotes' %}">
+                    <img src="{% static 'imagens/carrinho.png' %}" style="min-width: 30px; width: 30px; height: 30px; min-height: 30px; margin-top: 35px;" alt="">
+                </a>
+            </div>
+
+            <!-- Culuna login -->
+            <div class="col-2 col-sm-2 col-mb-2 col-lg-1 col-xl-1">
+                {% login_box request%}
+            </div>
+        </div>
+    </div>
+
+</header>

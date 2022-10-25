@@ -1,0 +1,20 @@
+{% if logged %}
+{% if loja %}
+<ul class="menu-user">
+    <li><a id='info_loja' href="{% url 'perfil_loja'%}" class="">Informações da loja</a></li>
+    <li><a id='editar_loja' href="{% url 'editar_perfil_loja'%}" class="">Editar Loja</a></li>
+    <li><a id='info_pessoal' href="{% url 'perfil' %}" class="">Perfil do adiministrador</a></li>
+    <li><a id='editar_perfil' href="{% url 'editar_perfil'%}" class="">Editar Perfil</a></li>
+    <li><a id='minhas_colecoes' href="{% url 'minhas_colecoes'%}" class="">Minhas coleções</a></li>
+    <li><a id='meus_pacotes' href="{% url 'meus_pacotes' %}" class="">Meus pacotes</a></li>
+</ul>
+{% else %}
+<ul class="menu-user">
+    <li><a id='info_pessoal' href="{% url 'perfil' %}" class="">Informações pessoais</a></li>
+    <li><a id='editar_perfil' href="{% url 'editar_perfil' %}" class="">Editar perfil</a></li>
+    <li><a id='meus_pacotes' href="{% url 'meus_pacotes' %}" class="">Meus pacotes</a></li>
+</ul>
+{% endif %}
+
+{% endif %}
+

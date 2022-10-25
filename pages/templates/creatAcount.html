@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'stylesCSS/styleLogin.css'%}">{% endblock css %}
+{% block title %}Cadastre-se{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+            <!-- CONTAINER BRANCO -->
+            <div class="containerBranco">
+                <!-- ELEMENTOS -->
+                <div class="ttp">
+                    <a href="{% url 'home'%}"><img class="iconLog" src="{% static 'imagens/CLOTHS ICON.png'%}" alt=""><br></a>
+                </div>
+                <h2> <b>CRIE SUA CONTA</b> </h2><br>
+                <!-- FORMULARIO -->
+                <form action="" class="form-bt" method='POST'>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-7">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>DADOS DA CONTA</p>
+                                </div>
+                                <div class="col-12">
+                                    <input name='nome' class="inptDADOS" placeholder="NOME" type="text" required>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    {% if status == '1' %}
+                                        <input name='cpf' class="inptDADOSER" placeholder="CPF já está cadastrado" type="text" required>
+                                    {% else %}
+                                        <input name='cpf' class="inptDADOS" placeholder="CPF (000.000.000-00)" type="text" required>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    {% if status == '2' %}
+                                        <input name="rg" class="inptDADOSER" placeholder="RG já está cadastrado" type="text" required>
+                                    {% else %}
+                                        <input name="rg" class="inptDADOS" placeholder="RG (0000000)" type="text" required>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12">
+                                    {% if status == '3' %}
+                                        <input name='telefone'  class="inptDADOSER" placeholder="Telefone já está cadastrado" type="text" required>
+                                    {% else %}
+                                        <input name='telefone' class="inptDADOS" placeholder="TELEFONE" type="text" required>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    {% if status == '4' %}
+                                        <input name='email' id="email" class="inptDADOSER" placeholder="Os emails não batem" type="email" required>
+                                    {% elif status == '6' %}
+                                        <input name='email' id="email" class="inptDADOSER" placeholder="Esse email
+                                         já existe" type="email" required>
+                                    {% else %}
+                                        <input name='email' id="email" class="inptDADOS" placeholder="EMAIL" type="email" required>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    {% if status == '5' %}
+                                    <input name='emailConfirmar' id="emailConfirmar" class="inptDADOSER" placeholder="Os emails não batem" type="email" required>
+                                    {% else %}
+                                        <input name='emailConfirmar' id="emailConfirmar" class="inptDADOS" placeholder="CORMFIRME SEU EMAIL" type="email" required>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    {% if status == '5' %}
+                                        <input name='senha' id="senha" class="inptDADOSER" placeholder="Senhas não batem" type="password" required>
+                                    {% elif status != '5'%}
+                                        <input name='senha' id="senha" class="inptDADOS" placeholder="SENHA" type="password" required>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    {% if status == '5' %}
+                                    <input name='senhaConfirmar' id="senhaConfirmar" class="inptDADOSER" placeholder="Senhas não batem" type="password" required>
+                                    {% elif status != '5' %}
+                                        <input name='senhaConfirmar' id="senhaConfirmar" class="inptDADOS" placeholder="CONFIRME SUA SENHA" type="password" required>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="text-ttp">LOCALIZAÇÂO</p>
+                                </div>
+                                <div class="col-12">
+                                    <input name='cep' class="inptDADOS" placeholder="CEP" type="text" name="cep" id="cep"
+                                        onblur="pesquisacep(this.value)" required>
+                                </div>
+                                <div class="col-12">
+                                    <input name='estado' class="inptDADOS" placeholder="ESTADO" type="text" name="uf" id="uf" required>
+                                </div>
+                                <div class="col-12">
+                                    <input name='cidade' class="inptDADOS" placeholder="CIDADE" type="text" name="cidade"
+                                        id="cidade" required>
+                                </div>
+                                <div class="col-12">
+                                    <input name='rua' class="inptDADOS" placeholder="RUA" type="text" name="rua" id="rua" required>
+                                </div>
+                                <div class="col-6">
+                                    <input name='bairro' class="inptDADOS" placeholder="BAIRRO" type="text" name="bairro"
+                                        id="bairro" required>
+                                </div>
+                                <div class="col-6">
+                                    <input name='numero' class="inptDADOS" placeholder="NUMERO" type="text" name="numero"
+                                        id="numero" required>
+                                </div>
+                                <script src="{% static 'script/locate.js'%}"></script>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space"></div>
+
+                    <div class="bnts">
+                        <button id="submit" type="submit" class="inptSUBM">C O N E C T E - S E</button>
+                        <label class="textAncLOG" for="">Já possui uma conta? </label>
+                        <a href="{% url 'login' %}"><input type="button" value="L O G I N" class="inptENVD"></a>
+                    </div>
+                </form>
+                <!-- INCONES REDES SOCIAIS -->
+                <div class="inconsREDES">
+                    <a href=""><img src="{% static 'imagens/tw.png'%}" alt=""></a>
+                    <a href=""><img src="{% static 'imagens/insta.png'%}" alt=""></a>
+                    <a href=""><img src="{% static 'imagens/face.png'%}" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'script/CreateAccount.js'%}" defer></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+{% endblock content %}
+
+
+    

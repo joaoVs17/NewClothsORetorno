@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% block title %}Pedidos{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/gerenciador.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/styleLojasC.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/stylePerfil.css' %}">
+{% endblock css %}
+
+{% block content %}
+<!--header-->
+{% header request %}
+<!--header-->
+
+<section>
+    <nav>
+        <input class="menu_user_bnt" type="checkbox">
+        {% menu_user request%}
+        <script>
+            link = document.getElementById('minhas_colecoes')
+            link.classList.add('active')
+        </script>
+    </nav>
+</section>
+
+<div class="l-container-colecoes">
+
+
+    <div class="l-gerenciador">
+        <button class="c-bnt-gerenciador"> <span> + </span> Nova coleção </button>
+
+        <a href="{% url 'minhas_colecoes' %}">
+            <button class="c-menu-gerenciador">
+                <p>
+                    <span> > </span> COLEÇÕES
+                </p>
+            </button>
+        </a>
+
+        <a href="#">
+            <button class="c-menu-gerenciador active-menu">
+                <p>
+                    <span> > </span> PEDIDOS
+                </p>
+            </button>
+        </a>
+
+        <a href="historico_pedidos.html">
+            <button class="c-menu-gerenciador">
+                <p>
+                    <span> > </span> HISTORICO DE PEDIDOS
+                </p>
+            </button>
+        </a>
+
+    </div>
+
+
+    <div class="l-colections">
+
+        <!-- CARD -->
+
+        <div class="c-card-colection" style="height: 350px;">
+            <a href="{% url 'ver_pedido' %}" ><img src="{% static 'imagens/9a5a18d55121d82359078da58c64e0fb.jpg' %}" alt=""></a>
+            <div class="c-card-colection__infos">
+                <h3>Nome de quem pediu</h3>
+                <p style="height: 5px;">04 peças</p>
+                <div class="c-barraBaixa">
+                    <p style="width: 100%">Data do pedido: 13/11/2022</p>
+                </div>
+                <a href="{% url 'ver_pedido' %}"><button class="addList" style="font-size: 10px">Ver dados do Pedido</button></a>
+                <button class="addList" style="font-size: 10px; background-color: #43a047;">Finalizar Pedido</button>
+            </div>
+        </div>
+
+        <!-- CARD -->
+
+
+    </div>
+
+</div>
+
+<!--footer-->
+{% footer %}
+
+{% endblock content %}

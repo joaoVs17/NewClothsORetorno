@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% block title %}Meus Pacotes{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/gerenciador.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/styleLojasC.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/stylePerfil.css'  %}">
+{% endblock css %}
+
+{% block content %}
+
+<!--HEADER-->
+{% header request %}
+<!--HEADER-->
+
+<section>
+    <nav>
+        <input class="menu_user_bnt" type="checkbox">
+        {% menu_user request %}
+        <script>
+            link = document.getElementById('meus_pacotes')
+            link.classList.add('active')
+        </script>
+    </nav>
+</section>
+
+<div class="l-container-colecoes">
+
+    <div class="l-gerenciador">
+        <button class="c-bnt-gerenciador"> <span> + </span> Novo Pacote </button>
+
+        <a href="minhas_colecoes.html">
+            <button class="c-menu-gerenciador active-menu">
+                <p>
+                    <span> > </span> PACOTES
+                </p>
+            </button>
+        </a>
+
+        <a href="historico_pedidos.html">
+            <button class="c-menu-gerenciador">
+                <p>
+                    <span> > </span> PACOTES ENVIADOS
+                </p>
+            </button>
+        </a>
+
+        <a href="historico_pedidos.html">
+            <button class="c-menu-gerenciador">
+                <p>
+                    <span> > </span> HISTÓRICO DE PACOTES
+                </p>
+            </button>
+        </a>
+
+    </div>
+
+
+    <div class="l-colections">
+
+        <!-- CARD -->
+
+        <div class="c-card-pacotes" style="margin-left: 15px">
+            <a href="">
+                <div class="img">
+                    <img style="z-index: 5" src="imagens/91f7809806c940b2b5ded485a5d10528_w432_h576_q85.webp"
+                        alt="">
+                    <img style="margin-left: -180px; z-index: 4;"
+                        src="https://img.ltwebstatic.com/images3_pi/2021/10/19/16346079850005090802aa9c0f8867009e6012fe35_thumbnail_600x.webp"
+                        alt="">
+                    <img style="margin-left: -180px; z-index: 3;"
+                        src="https://img.ltwebstatic.com/images3_pi/2021/08/20/1629437789529865376f44a935564c4ccc92fef744_thumbnail_600x.webp"
+                        alt="">
+                    <img style="margin-left: -180px; z-index: 2;"
+                        src="https://img.ltwebstatic.com/images3_pi/2021/08/10/16285597094805f22dd2451606ed90916df7e3e234_thumbnail_600x.webp"
+                        alt="">
+                    <img style="margin-left: -180px; z-index: 1;"
+                        src="https://img.ltwebstatic.com/images2_pi/2019/08/07/15651647703941727324_thumbnail_600x799.webp"
+                        alt="">
+                </div>
+            </a>
+            <div class="c-card-colection__infos" style="padding: 20px 0px;">
+                <h3>Nome da loja</h3>
+                <p style="height: 5px;">04 peças</p>
+                <button class="addList" style="font-size: 10px; background-color: #ff8f00;">Detalhes do Pacote</button>
+                <button class="addList" style="font-size: 10px; background-color: #43a047;">Pedir Pacote</button>
+                <button class="addList" style="font-size: 10px">Cancelar Pacote</button>
+            </div>
+        </div>
+
+        <!-- CARD -->
+
+    </div>
+
+</div>
+<!--Footer-->
+{% footer %}
+{% endblock content %}
+
+
+    

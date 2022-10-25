@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %}Pedido{% endblock title %}
+{% load static %}
+{% load post_tags %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/gerenciador.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/styleLojasC.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/stylePerfil.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+<!--header-->
+{% header request %}
+<!--header-->
+
+<section>
+    <nav>
+        <input class="menu_user_bnt" type="checkbox">
+        {% menu_user request %}
+        <script>
+            link = document.getElementById('minhas_colecoes')
+            link.classList.add('active')
+        </script>
+    </nav>
+</section>
+
+<div class="l-container-colecoes">
+
+
+    <div class="l-gerenciador">
+        <button class="c-bnt-gerenciador"> <span> + </span> Nova coleção </button>
+
+        <a href="{% url 'minhas_colecoes' %}">
+            <button class="c-menu-gerenciador">
+                <p>
+                    <span> > </span> COLEÇÕES
+                </p>
+            </button>
+        </a>
+
+        <a href="">
+            <button class="c-menu-gerenciador active-menu">
+                <p>
+                    <span> > </span> PEDIDOS
+                </p>
+            </button>
+        </a>
+
+        <a href="historico_pedidos.html">
+            <button class="c-menu-gerenciador">
+                <p>
+                    <span> > </span> HISTORICO DE PEDIDOS
+                </p>
+            </button>
+        </a>
+
+    </div>
+
+
+    <div class="l-colections">
+
+        <div class="container">
+
+            <!-- informaçoes do pedido -->
+
+            <div class="row">
+                <div class="col-3">
+                    <img src="{% static 'imagens/9a5a18d55121d82359078da58c64e0fb.jpg' %}" class="img_pff" alt="">
+                </div>
+                <div class="col">
+                    <div class="dt_pedido">
+                        <br>
+                        <h5 style="margin-bottom: 20px;">Nome do Usuario</h5>
+                        <p><span>Email:</span> Exemplodeemail@gmail.com</p>
+                        <p><span>Telefone:</span> (69) 9843442-8922</p>
+                        <p><span>Endereço:</span> Av. Dois de Junho, 2251 - Centro, Cacoal - RO, 76963-767</p>
+                        <p><span>Data do Pedido:</span> 12/11/2022</p>
+                        <p><span>N° de peças:</span> 13</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <br><br>
+                    <h2>Roupas Solicitadas</h2>
+                    <br><br>
+                </div>
+            </div>
+
+            <!-- roupas solicitadas -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="box-ropas-solicitadas">
+
+                        <!-- CARDS -->
+
+                        <div class="card-rs">
+                            <img src="{% static 'imagens/91f7809806c940b2b5ded485a5d10528_w432_h576_q85.webp' %}" alt="">
+
+                            <p>Tamanhos solicitados</p>
+                            <div class="conttt" style="background-color: white; padding: 10px;">
+                                <button class="bnt_tamanho_2 tem" disabled>PP</button>
+                                <button class="bnt_tamanho_2 tem" disabled>P</button>
+                                <button class="bnt_tamanho_2 nao_tem" disabled>M</button>
+                                <button class="bnt_tamanho_2 nao_tem" disabled>G</button>
+                                <button class="bnt_tamanho_2 nao_tem" disabled>GG</button>
+                                <button class="bnt_tamanho_2 nao_tem" disabled>XG</button>
+                            </div>
+                            <p style="margin-top: 0;">Número de peças: <span>13</span></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+{% footer %}
+{% endblock content %}
+    

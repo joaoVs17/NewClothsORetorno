@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% block title %}Editar Perfil da Loja{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/stylePerfil.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% header request %}
+
+
+<section>
+    <nav>
+        <input class="menu_user_bnt" type="checkbox">
+        {% menu_user request %}
+        <script>
+            link = document.getElementById('editar_loja')
+            link.classList.add('active')
+        </script>
+    </nav>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="box-color-cz">
+                    <form action="" method="POST"  class="form-bt" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <p>DADOS DA LOJA</p>
+                            </div>
+                            <input name="logo" type="file" style="display:none;" id="foto_usuario" accept="image/*">
+                            <div class="col-12">
+                                <input class="inptDADOS" value="{{request.user.loja.nome_loja}}" name="nome_loja" placeholder="NOME DA LOJA" type="text" required>
+                            </div>
+                            <div class="col-12">
+                                {% if request.user.loja.telefone_loja %}
+                                    <input class="inptDADOS" value="{{request.user.loja.telefone_loja}}" name="telefone_loja" placeholder="TELEFONE" type="text" required>
+                                {% else %}
+                                    <input class="inptDADOS" value="{{request.user.telefone}}" name="telefone_loja" placeholder="TELEFONE" type="text" required>
+                                {% endif %}
+                            </div>
+                            <div class="col-12">
+                                {% if request.user.loja.email_loja %}
+                                    <input class="inptDADOS" value="{{request.user.loja.email_loja}}" name="email_loja" placeholder="EMAIL" type="text" required>
+                                {% else %}
+                                    <input class="inptDADOS" value="{{request.user.email}}" name="email_loja" placeholder="EMAIL" type="text" required>
+                                {% endif %}
+                                
+                            </div>
+                            <div class="col-12">
+                                <br>
+                                <p>LOCALIZAÇÂO DA LOJA</p>
+                            </div>
+                            <div class="col-3">
+                                <input class="inptDADOS" value="{{request.user.loja.endereco.cep}}" placeholder="CEP" type="text" name="cep" id="cep"  onblur="pesquisacep(this.value)" required>
+                            </div>
+                            <div class="col-4">
+                                <input class="inptDADOS" value="{{request.user.loja.endereco.estado}}" placeholder="ESTADO" type="text" name="uf" id="uf" required>
+                            </div>
+                            <div class="col-5">
+                                <input class="inptDADOS" value="{{request.user.loja.endereco.cidade}}" placeholder="CIDADE" type="text" name="cidade" id="cidade" required>
+                            </div>
+                            <div class="col-7">
+                                <input class="inptDADOS" value="{{request.user.loja.endereco.rua}}" placeholder="RUA" type="text" name="rua" id="rua" required>
+                            </div>
+                            <div class="col-5">
+                                <input class="inptDADOS" value="{{request.user.loja.endereco.bairro}}" placeholder="BAIRRO" type="text" name="bairro" id="bairro">
+                            </div>
+                            <script src="{% static 'script/locate.js' %}"></script>
+                        </div>
+                        <div class="buttons_user_edd">
+                            <button>CONFIRMAR ALTERAÇÕES</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="box-color-lr">
+                    {% if request.user.loja.logo_loja %}
+                        <img id="foto" src="{{request.user.loja.logo_loja.url}}"
+                        alt="">
+                    {% else %}
+                        <img id="foto" src="{% static 'imagens/user.png'%}"
+                        alt="">
+                    {% endif %}
+                    <label for="foto_usuario"><img src="{% static 'imagens/trocar-camera.png' %}" alt=""></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+{% footer %}
+
+<script src="{% static 'script/editar.js'%}" defer></script>
+
+{% endblock content %}

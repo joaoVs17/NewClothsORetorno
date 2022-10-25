@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% block title %}perfil_loja{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/stylePerfil.css' %}">
+{% endblock css %}
+
+{% block content %}
+{% header request %}
+
+<section>
+    <nav>
+        <input class="menu_user_bnt" type="checkbox">
+        {% menu_user request %}
+        <script>
+            link = document.getElementById('info_loja')
+            link.classList.add('active')
+        </script>
+    </nav>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="box-color-lr">
+                    {% if request.user.loja.logo_loja %}
+                        <img src="{{request.user.loja.logo_loja.url}}" alt="">
+                    {% else %}
+                        <img src="{% static 'imagens/user.png'%}">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="box-color-cz">
+                    <div>
+                        <h5>Informações da loja</h5>
+                    </div>
+                    <hr>
+                    <div>
+                        <h3>Nome</h3>
+                        <p>{{request.user.loja.nome_loja}}</p>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>
+                            {% if request.user.loja.email_loja %}
+                            {{request.user.loja.email_loja}}
+                            {% else %}
+                            {{request.user.email}}
+                            {% endif %}</p>
+                    </div>
+                    <div>
+                        <h3>Telefone</h3>
+                        <p>
+                            {% if request.user.loja.telefone_loja %}
+                            {{request.user.loja.telefone_loja}}
+                            {% else %}
+                            {{request.user.telefone}}
+                            {% endif %}</p>
+                    </div>
+                    <div>
+                        <h3>Endereço</h3>
+                        <p>{{request.user.loja.endereco.rua}}, {{request.user.loja.endereco.bairro}}, {{request.user.loja.endereco.numero}}, {{request.user.loja.endereco.cidade}}, ({{request.user.loja.endereco.estado}})</p>
+                    </div>
+                    <div class="buttons_user_edd">
+                        <a href="{% url 'editar_perfil_loja'%}"><button>Editar informações</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% footer %}
+{% endblock content %}
+
+
+   

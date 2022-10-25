@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,500;1,600;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,500;1,600;1,800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Inknut;
+}
+
+body {
+    background-image: url('teste-padrão-laranja-e-amarelo-sem-emenda-do-sumário-favo-de-mel-vetor-126422186.jpg');
+}
+
+/* CORES EM VARIAVEIS */
+
+:root {
+    --LaranjaEscuro: #FD441B;
+    --LaranjaMedio: #FF6B18;
+    --LaranjaClaro: #FA861B;
+    --Amarelo: #FFA41C;
+    --AmareloClaro: #FFCF88;
+    --cinza: #595959;
+}
+
+/* CONTAINER IMG E H2 */
+
+.containerBranco {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 80px;
+    padding-top: 50px;
+}
+
+.iconLog {
+    width: 40%;
+}
+
+h2 {
+    letter-spacing: 5px;
+    color: #1d1d1d;
+    font-weight: 800;
+}
+
+p {
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-family: Poppins;
+}
+
+/* IMPUTS E BOTOES */
+
+.inptDADOS {
+    margin-top: 15px;
+    width: 100%;
+    border: none;
+    border-bottom: solid 2px var(--LaranjaMedio);
+    font-size: 12px;
+    height: 20px;
+    color: var(--cinza);
+    letter-spacing: 1px;
+    text-align: left;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    font-family: Poppins;
+}
+
+.inptDADOS:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+    border: none;
+    border-bottom: solid 2px var(--Amarelo);
+    color: var(--cinza);
+}
+
+.inptDADOS-mn:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+    border: none;
+    border-bottom: solid 2px var(--Amarelo);
+    color: var(--cinza);
+}
+
+.inptSUBM {
+    width: 250px;
+    height: 30px;
+    border: none;
+    background-color: var(--LaranjaClaro);
+    color: white;
+    font-weight: 400;
+    font-size: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.inptSUBM:focus {
+    outline: 0;
+}
+
+.inptSUBM:hover {
+    background-color: var(--LaranjaMedio);
+}
+
+.inptSUBM-log {
+    margin-top: 170px;
+    width: 250px;
+    height: 30px;
+    border: none;
+    background-color: var(--LaranjaClaro);
+    color: white;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.inptSUBM-log:focus {
+    outline: 0;
+}
+
+.inptENVD {
+    width: 250px;
+    height: 30px;
+    border: none;
+    background-color: var(--Amarelo);
+    color: white;
+    font-weight: 400;
+    font-size: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.inptENVD:focus {
+    outline: 0;
+}
+
+.inptENVD:hover {
+    background-color:#e97508;
+}
+
+.textAncLOG {
+    font-size: 10px;
+    font-family: Poppins;
+    margin: 10px 0;
+}
+
+/* INCONES */
+
+.inconsREDES {
+    width: 100%;
+}
+
+.inconsREDES img {
+    width: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.bnts {
+    width: 250px;
+    height: auto;
+    position: absolute;
+    bottom: 100px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.inconsREDES {
+    position: absolute;
+    bottom: 30px;
+
+}
+
+.form-bt {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ttp {
+    width: 450px;
+    margin-top: -30px;
+}
+
+.space {
+    height: 220px;
+}
+
+.space2 {
+    height: 180px;
+}
+
+@media (max-width: 1200px) {
+    .text-ttp {
+        margin-top: 40px;
+    }
+}
+
+.slides {
+    display: flex;
+    position: absolute;
+    bottom: 140px;
+}
+
+.slids {
+    overflow: hidden; 
+    height: 260px;
+}
+
+.slide1 {
+    min-width: 100%;
+    transition: all 1s;
+}
+
+.slide {
+    min-width: 100%;
+    transition: all 1s;
+}
+
+.inptSUBM:disabled {
+    background-color: #979797;
+}
+
+.tty {
+    margin:10px;
+    width: 20px;
+    height: 20px;
+}

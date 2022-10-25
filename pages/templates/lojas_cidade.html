@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% block title %}{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/styleLojasC.css' %}">
+{% endblock css %}
+
+{% block content %}
+<!-- //////////////////////////// CABEÇARIO //////////////////////////// -->
+
+{% header request %}
+<script>
+    link = document.getElementById('lojas')
+    link.classList.add('active')
+</script>
+
+<!-- //////////////////////////// CONTEUDO //////////////////////////// -->
+
+<section>
+    <div class="boxCidades">
+        <p class="ttCidC">{{cidade}}</p>
+        <hr class="linhaCidC">
+
+        <div class="boxLojasCadNCidade">
+            {% for loja in lojas_cidade %}
+            <div class="lojBx">
+                <a href="{% url 'loja' cidade loja.nome_loja %}"><img src={% if loja.logo_loja %}"{{loja.logo_loja.url}}"{% else %}"{% static 'imagens/user.png'%}"{% endif %} alt=""></a>
+                <div>
+                    <p>{{loja.nome_loja}}</p>
+                    <a href="{% url 'loja' cidade loja.nome_loja %}"><button>CONFIRA</button></a>
+                </div>
+            </div>
+            {% endfor %}    
+        </div>
+
+        <hr class="linhaCidC"><br>
+        <p class="ttCidC">Outras Cidades em {{lojasCidade.0.estado_loja}}</p>
+        <div class="estados">
+            {% for outra in cidades %}
+            {% if outra.cidade_loja != cidade %}
+            <p><a href="{% url 'cidadever' outra.cidade_loja%}">{{outra.cidade_loja}}</a></p>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+<!-- //////////////////////////// REDAPE //////////////////////////// -->
+
+{% footer %}
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+{% endblock content %}

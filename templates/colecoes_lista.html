@@ -1,0 +1,5 @@
+{% for colecao in colecoes %}
+    <a href="{% url 'colecao' colecao.pk%}">
+        <li>{{colecao}}</li>
+    </a>
+{% endfor %}

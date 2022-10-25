@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'stylesCSS/styleLogin.css'%}">{% endblock css %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-9 col-md-8 col-lg-7 col-xl-6">
+            <!-- CONTAINER BRANCO -->
+            <div class="containerBranco">
+                <!-- ELEMENTOS -->
+                <div class="ttp">
+                    <a href="{% url 'home'%}"><img class="iconLog" src="{% static 'imagens/CLOTHS ICON.png'%}" alt=""><br></a>
+                </div>
+                <h2> <b>LOGIN</b> </h2><br><br>
+                <!-- FORMULARIO -->
+                <form action="" class="form-bt" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12">
+                            <input name="email" class="inptDADOS" placeholder="EMAIL" type="email"  required>
+                        </div>
+                        <div class="col-12">
+                            <input name="senha" class="inptDADOS" placeholder="SENHA" type="password" required>
+                        </div>
+                    </div>
+                    {% if status == '1' %}
+                        <div class='alert alert-danger'>Senha ou usuário incorretos</div>
+                    {% endif %}
+                    <div class="bnts">
+                        <button type="submit" class="inptSUBM-log">L O G I N</button>
+                        <label class="textAncLOG" for="">Não tem uma conta? Cadastre-se agora</label>
+                        <a href="{% url 'cadastro' %}"><input type="button" value="C A D A S T R E - S E" class="inptENVD"></a>
+                    </div>
+                </form>
+                <!-- INCONES REDES SOCIAIS -->
+                <div class="inconsREDES">
+                    <a href=""><img src="{% static static 'imagens/tw.png'%}" alt=""></a>
+                    <a href=""><img src="{% static static 'imagens/insta.png'%}" alt=""></a>
+                    <a href=""><img src="{% static static 'imagens/face.png'%}" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+{% endblock content %}
+

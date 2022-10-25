@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% block title %}Resultados da pesquisa{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/pesquisa.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <!-- //////////////////////////// CABEÇARIO //////////////////////////// -->
+
+    {% header request %}
+
+    <section>
+        <div class="container">
+            <br><br>
+            <div class="row">
+                <div class="col-3">
+                    <div class="c-pesquisa-filtro">
+                        <h5>Parte Superior</h5>
+                        <hr>
+                        <a href="">
+                            <p> > Camiseta</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Blusinha</p>
+                        </a><a href="">
+                            <p> > Camisa</p>
+                        </a><a href="">
+                            <p> > Suéter</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Cardigan</p>
+                        </a><a href="">
+                            <p> > Blazer</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Jaqueta</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Casaco</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Colete</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Regata</p>
+                        </a>
+
+                        <br>
+
+                        <h5>Parte Inferior</h5>
+                        <hr>
+                        <a href="pesquisaFilter.html">
+                            <p> > Short</p>
+                        </a><a href="">
+                            <p> > Bermuda</p>
+                        </a><a href="">
+                            <p> > Calça</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Vestido</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Saia</p>
+                        </a>
+
+                        <br>
+
+                        <h5>Acessórios</h5>
+                        <hr>
+                        <a href="pesquisaFilter.html">
+                            <p> > Meia-calça</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Cachecól</p>
+                        </a><a href="">
+                            <p> > Sapatos</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Meias</p>
+                        </a><a href="pesquisaFilter.html">
+                            <p> > Bolsas</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="h2">Principais peças relacionadas</div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="l-lojas-ropa-box-ropa">
+                                {% for resultado in resultados_roupas %}
+                                    <div class="c-lojas-ropa-card-ropa">
+                                        <a href="{% url 'roupa' resultado.colecao.loja.endereco.cidade resultado.colecao.loja.nome_loja resultado.pk %}">
+                                            <img src="{{resultado.foto.url}}"
+                                                alt="">
+                                            <p>{{resultado.nome_roupa}}</p>
+                                            <button>CONFIRA</button>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="h2">Principais lojas relacionadas</div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="l-lojas-ropa-box">
+
+                                {% for resultado in resultados_lojas %}
+                                    <div class="c-lojas-ropa-card">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img src="{% if resultado.logo_loja %}{{resultado.logo_loja.url}}{% else %}{% static 'imagens/user.png' %}{% endif %}" class="c-lojas-ropa-card__img"
+                                                    alt="">
+                                            </div>
+                                            <div class="col-7">
+                                                <h5>{{resultado.nome_loja}}</h5>
+                                                <a href=""><button
+                                                        class="c-lojas-ropa-card__bnt">Confira</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% footer %}
+
+    <script src="script/js.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+{% endblock content %}

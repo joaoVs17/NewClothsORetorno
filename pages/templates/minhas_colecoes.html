@@ -1,0 +1,559 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% load mathfilters %}
+{% block title %}Minhas Coleções{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/gerenciador.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/styleLojasC.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/stylePerfil.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% header request %}
+
+<section>
+    <nav>
+        <input class="menu_user_bnt" type="checkbox">
+        {% menu_user request%}
+        <script>
+            link = document.getElementById('minhas_colecoes')
+            link.classList.add('active')
+        </script>
+    </nav>
+</section>
+
+<script defer>
+    i=0
+    function addCategoria() { 
+        if (i%2==0) {
+            document.getElementById('addCategoria').style.display = 'flex';
+            i+=1
+        } else {
+            document.getElementById('addCategoria').style.display = 'none';
+            i+=1
+        }
+    };
+</script>
+<div class="modal" id="addCategoria" style="background-color:rgb(255 255 255 0.3) !important;z-index: 5; display: none; width: 100vw;height: 100vh;align-items: center;justify-content: center">
+    <div class="container" style="filter: drop-shadow(0px 0px 15px gray);width: 70vw !important; height: 30vh;background-color: white;border-radius: 1rem;">
+        <label for="" onclick="addCategoria()" style="margin-top: 1rem;display: block;height: 2rem !important;background-color: #FFA41C;width:2rem !important;display: flex;align-items: center;justify-content: center;border-radius: 100%;font-weight: 900 !important;font-family: 'Poppins';color: white;">x</label>
+        <br>
+        <form action="{% url 'add_colecao' %}" method="POST">
+            {% csrf_token %}
+            <input name="nome" placeholder="Nome da Coleção" class="c-inpt-modal" type="text">
+            <button type="submit" style="background-color: #FFA41C;" class="addList">ADICIONAR</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    i = 0;
+    function chama_submenu() {
+        if (i % 2 == 0) {
+            document.getElementById('setinha').style.rotate = '90deg';
+            document.getElementById('mm').style.height = 'auto';
+            i = i + 1;
+        } else {
+            document.getElementById('setinha').style.rotate = '0deg';
+            i = i + 1;
+            document.getElementById('mm').style.height = '0px';
+        }
+    }
+</script>
+
+<div class="l-container-colecoes">
+
+
+    <div class="l-gerenciador">
+        <button class="c-bnt-gerenciador" onclick="addCategoria()"> <span> + </span> Nova coleção </button>
+
+
+        <button onclick="chama_submenu()" class="c-menu-gerenciador active-menu">
+            <p>
+            <div style="margin-right: 30px; font-family: Poppins; color: #FA281B; font-weight: 700; transition: all 0.5s;" id="setinha"> > </div> COLEÇÕES
+            </p>
+        </button>
+
+        <ul class="c-sub-menu-gerenciador" id="mm">
+            {% colecoes_lista request%}
+        </ul>
+
+
+        <a href="{% url 'meus_pedidos'%}">
+            <button class="c-menu-gerenciador">
+                <p>
+                    <span> > </span> PEDIDOS
+                </p>
+            </button>
+        </a>
+
+        <a href="historico_pedidos.html">
+            <button class="c-menu-gerenciador">
+                <p>
+                    <span> > </span> HISTORICO DE PEDIDOS
+                </p>
+            </button>
+        </a>
+
+    </div>
+
+    <div class="l-colections">
+        {% if pk %}
+        {% card_colecoes request pk %}
+        {% endif %}
+        <!-- CARD -->
+        {% comment %} {% for roupa in roupas %}
+            {% if roupa.categoria.tipo_tamanho.nome_tipo == "Letra" %}
+                <div class="c-card-colection">
+                    <img src="{{roupa.foto.url}}" alt="">
+                    <div class="c-card-colection__infos">
+                        <h3>{{roupa.nome_roupa}}</h3>
+                        <p>QTD: {{roupa.pp|add:roupa.p|add:roupa.m|add:roupa.g|add:roupa.gg|add:roupa.xg}}</p>
+                        <div class="conttt">
+                            
+                            <button class="bnt_tamanho_2 {% if roupa.pp < 1 or not roupa.pp %}nao_tem {% else %}tem{% endif %}" disabled>PP</button>
+                            <button class="bnt_tamanho_2 {% if roupa.p < 1 or not roupa.p %}nao_tem {% else %}tem{% endif %}" disabled>P</button>
+                            <button class="bnt_tamanho_2 {% if roupa.m < 1 or not roupa.m %}nao_tem {% else %}tem{% endif %}" disabled>M</button>
+                            <button class="bnt_tamanho_2 {% if roupa.g < 1 or not roupa.g %}nao_tem {% else %}tem{% endif %}" disabled>G</button>
+                            <button class="bnt_tamanho_2 {% if roupa.gg < 1 or not roupa.gg %}nao_tem {% else %}tem{% endif %}" disabled>GG</button>
+                            <button class="bnt_tamanho_2 {% if roupa.xg < 1 or not roupa.xg %}nao_tem {% else %}tem{% endif %}" disabled>XG</button>
+                        </div>
+                        <div class="c-barraBaixa">
+                            <p>Add: {{roupa.data_adicao}}</p>
+                            <div class="c-bnts-barraBaixa">
+                                <button class="c-bnts-barraBaixa__edt">
+                                    <img src="{% static 'imagens/editar.png' %}" alt="">
+                                </button>
+                                <a href="{% url 'deletar_roupa' roupa.pk %}">
+                                    <button class="c-bnts-barraBaixa__exc">
+                                        <img src="{% static 'imagens/lixeira.png' %}" alt="">
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% elif roupa.categoria.tipo_tamanho.nome_tipo == "Numero" %}
+                <div class="c-card-colection">
+                    <img src="{{roupa.foto.url}}" alt="">
+                    <div class="c-card-colection__infos">
+                        <h3>{{roupa.nome_roupa}}</h3>
+                        <p>QTD: {{roupa.t1|add:roupa.t2|add:roupa.t3|add:roupa.t4|add:roupa.t5|add:roupa.t6}}</p>
+                        <div class="conttt">        
+                            <button class="bnt_tamanho_2 {% if roupa.t1 < 1 or not roupa.t1 %}nao_tem {% else %}tem{% endif %}" disabled>34</button>
+                            <button class="bnt_tamanho_2 {% if roupa.t2 < 1 or not roupa.t2 %}nao_tem {% else %}tem{% endif %}" disabled>35</button>
+                            <button class="bnt_tamanho_2 {% if roupa.t3 < 1 or not roupa.t3 %}nao_tem {% else %}tem{% endif %}" disabled>36</button>
+                            <button class="bnt_tamanho_2 {% if roupa.t4 < 1 or not roupa.t4 %}nao_tem {% else %}tem{% endif %}" disabled>37</button>
+                            <button class="bnt_tamanho_2 {% if roupa.t5 < 1 or not roupa.t5 %}nao_tem {% else %}tem{% endif %}" disabled>38</button>
+                            <button class="bnt_tamanho_2 {% if roupa.t6 < 1 or not roupa.t6 %}nao_tem {% else %}tem{% endif %}" disabled>39+</button>
+                        </div>
+                        <div class="c-barraBaixa">
+                            <p>Add: {{roupa.data_adicao}}</p>
+                            <div class="c-bnts-barraBaixa">
+                                <button class="c-bnts-barraBaixa__edt">
+                                    <img src="{% static 'imagens/editar.png' %}" alt="">
+                                </button>
+                                <a href="{% url 'deletar_roupa' roupa.pk %}">
+                                    <button class="c-bnts-barraBaixa__exc">
+                                        <img src="{% static 'imagens/lixeira.png' %}" alt="">
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %} {% endcomment %}
+
+        <!-- CARD -->
+        {% if pk %}
+            <button id="add" onclick="add('mod')" class="c-bnt-addRopa"> + </button>
+        {% endif %}
+
+    </div>
+
+    <!-- modal -->
+
+    <div id="mod" class="l-modal_add" style="z-index: 1;">
+        <div class="container" id="categorias">
+            <div class="row">
+                <div class="col-12">
+                    <h2 style="text-align: left">Selecione uma categoria</h2>
+
+                    <h5 style="margin-top: 15px; margin-bottom: 15px;">Parte Superior</h5>
+                    <div class="c-categorias">
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Camiseta">Camiseta</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Blusinha">Blusinha</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Camisa">Camisa</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Suéter">Suéter</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Cardigan">Cardigan</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Blazer">Blazer</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Jaqueta">Jaqueta</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Casaco">Casaco</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Colete">Colete</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Regata">Regata</button>
+                    </div>
+
+                    <h5 style="margin-top: 15px; margin-bottom: 15px;">Parte Inferior</h5>
+                    <div class="c-categorias">
+                        <button onclick="chama_form('form02', this.value, 'categoria_02')" class="c-categorias__card" value="Short">Short</button>
+                        <button onclick="chama_form('form02', this.value, 'categoria_02')" class="c-categorias__card" value="Bermuda">Bermuda</button>
+                        <button onclick="chama_form('form02', this.value, 'categoria_02')" class="c-categorias__card" value="Calça">Calça</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Vestido">Vestido</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Saia">Saia</button>
+                    </div>
+
+                    <h5 style="margin-top: 15px; margin-bottom: 15px;">Acessórios</h5>
+                    <div class="c-categorias">
+                        <button onclick="chama_form('form01', 'categoria_01')" class="c-categorias__card">Meia-calça</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Cachecol">Cachecól</button>
+                        <button onclick="chama_form('form02', this.value, 'categoria_02')" class="c-categorias__card" value="Sapato">Sapato</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Meia">Meia</button>
+                        <button onclick="chama_form('form01', this.value, 'categoria_01')" class="c-categorias__card" value="Bolsa">Bolsa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container" style="display: none" id="form01">
+            <div class="row">
+                <div class="col-4">
+                    <label for="">
+                        <label class="c-img-modal"
+                            style="display: flex; justify-content: center; align-items: center">
+                            <img id='img1' style="width:100%" src="{% static 'imagens/simbolo-de-interface-de-camera-fotografica-para-botao.png' %}" alt="">
+                        </label>
+                    </label>
+                </div>
+                <div class="col-8">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="c-text-modal">
+                                    Nome da Roupa
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <input name="nome_roupa" placeholder="Nome da Roupa" class="c-inpt-modal" type="text">
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="c-text-modal">
+                                    Preço
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <input name="preco" placeholder="Preço" class="c-inpt-modal" type="number">
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="c-text-modal">
+                                    Foto
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <input id='ipt1' name="foto" style="height: 47px;" placeholder="Foto" class="c-inpt-modal" type="file" accept="image/*">
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="c-text-modal">
+                                    Tamanhos disponiveis
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <div class="conttt" style="padding: 0px 5px;">
+                                    <label for="checkbox01" name="" id="check01"
+                                        onclick="bunt('checkbox01', 'check01', 'bnt-tam-1')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">PP</label>
+                                    <label for="checkbox02" name="" id="check02"
+                                        onclick="bunt('checkbox02', 'check02', 'bnt-tam-2')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">P</label>
+                                    <label for="checkbox03" name="" id="check03"
+                                        onclick="bunt('checkbox03', 'check03', 'bnt-tam-3')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">M</label>
+                                    <label for="checkbox04" name="" id="check04"
+                                        onclick="bunt('checkbox04', 'check04', 'bnt-tam-4')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">G</label>
+                                    <label for="checkbox05" name="" id="check05"
+                                        onclick="bunt('checkbox05', 'check05', 'bnt-tam-5')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">GG</label>
+                                    <label for="checkbox06" name="" id="check06"
+                                        onclick="bunt('checkbox06', 'check06', 'bnt-tam-6')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">XG</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="" style="display: none;">
+                                <input id="checkbox01" type="checkbox">
+                                <input id="checkbox02" type="checkbox">
+                                <input id="checkbox03" type="checkbox">
+                                <input id="checkbox04" type="checkbox">
+                                <input id="checkbox05" type="checkbox">
+                                <input id="checkbox06" type="checkbox">
+                            </label>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="c-text-modal" style="margin-top: 0;">
+                                    Quantidade em Estoque <br> (Por Tamanho)
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <div class="conttt">
+                                    <input type="number" name="t1" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty" id="bnt-tam-1">
+                                    <input type="number" name="t2" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-2">
+                                    <input type="number" name="t3" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-3">
+                                    <input type="number" name="t4" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-4">
+                                    <input type="number" name="t5" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-5">
+                                    <input type="number" name="t6" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-6">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- INPUT DE CATEGORIA-->
+                        <input id="categoria_01" style="display: none" name="categoria" type="text">
+                        <!-- INPUT DE CATEGORIA-->
+
+                        <br>
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <button type="button" onclick="add('mod')" class="addList">CANCELAR</button>
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" style="background-color: #FFA41C;" class="addList">ADICIONAR</button>
+                            </div>
+                        </form>
+                        </div>
+                    
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container" style="display: none" id="form02">
+            <div class="row">
+                <div class="col-4">
+                    <label for="">
+                        <label class="c-img-modal"
+                            style="display: flex; justify-content: center; align-items: center">
+                            <img id='img2' style="width:100%" src="{% static 'imagens/simbolo-de-interface-de-camera-fotografica-para-botao.png' %}" alt="">
+                        </label>
+                    </label>
+                </div>
+                <div class="col-8">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="c-text-modal">
+                                    Nome da Roupa
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <input name="nome_roupa" placeholder="Nome da Roupa" class="c-inpt-modal" type="text">
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="c-text-modal">
+                                    Preço
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <input name="preco" placeholder="Preço" class="c-inpt-modal" type="number">
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="c-text-modal">
+                                    Foto
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <input id='ipt2' name="foto" style="height: 47px;" placeholder="Foto" class="c-inpt-modal" type="file" accept="image/*">
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="c-text-modal">
+                                    Tamanhos disponiveis
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <div class="conttt" style="padding: 0px 5px;">
+                                    <label for="checkbox201" name="" id="check201"
+                                        onclick="bunt('checkbox201', 'check201', 'bnt-tam-201')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">34</label>
+                                    <label for="checkbox202" name="" id="check202"
+                                        onclick="bunt('checkbox202', 'check202', 'bnt-tam-202')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">35</label>
+                                    <label for="checkbox203" name="" id="check203"
+                                        onclick="bunt('checkbox203', 'check203', 'bnt-tam-203')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">36</label>
+                                    <label for="checkbox204" name="" id="check204"
+                                        onclick="bunt('checkbox204', 'check204', 'bnt-tam-204')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">37</label>
+                                    <label for="checkbox205" name="" id="check205"
+                                        onclick="bunt('checkbox205', 'check205', 'bnt-tam-205')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">38</label>
+                                    <label for="checkbox206" name="" id="check206"
+                                        onclick="bunt('checkbox206', 'check206', 'bnt-tam-206')"
+                                        style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
+                                        class="bnt_tamanho_2 ">39+</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="" style="display: none;">
+                                <input id="checkbox201" type="checkbox">
+                                <input id="checkbox202" type="checkbox">
+                                <input id="checkbox203" type="checkbox">
+                                <input id="checkbox204" type="checkbox">
+                                <input id="checkbox205" type="checkbox">
+                                <input id="checkbox206" type="checkbox">
+                            </label>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="c-text-modal" style="margin-top: 0;">
+                                    Quantidade em Estoque <br> (Por Tamanho)
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <div class="conttt">
+                                    <input type="number" name="t1" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-201">
+                                    <input type="number" name="t2" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-202">
+                                    <input type="number" name="t3" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-203">
+                                    <input type="number" name="t4" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-204">
+                                    <input type="number" name="t5" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-205">
+                                    <input type="number" name="t6" style="padding-left: 5px; width: 35px; height: 35px;" disabled min="0" value="0"
+                                        class="bnt_tamanho_2 bnt-tty " id="bnt-tam-206">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- INPUT DE CATEGORIA-->
+                        <input id="categoria_02" style="display: none" name="categoria" type="text">
+                        <!-- INPUT DE CATEGORIA-->
+
+                        <br>
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <button type="button" onclick="add('mod')" class="addList">CANCELAR</button>
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" style="background-color: #FFA41C;" class="addList">ADICIONAR</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    x = 0;
+    function add(element) {
+        if (x % 2 == 0) {
+            document.getElementById(element).style.left = '10%';
+            x = x + 1;
+            console.log(x);
+        } else {
+            document.getElementById(element).style.left = '-100%';
+            document.getElementById('all')
+            x = x + 1;
+            console.log(x);
+
+            document.getElementById('categorias').style.display = 'block';
+            document.getElementById('form01').style.display = 'none';
+        }
+    }
+
+    function chama_form(element, categ, catg_inpt) {
+        document.getElementById('categorias').style.display = 'none';
+        if (element == 'form01') {
+            document.getElementById('form02').style.display = 'none';
+        } else {
+            document.getElementById('form01').style.display = 'none';
+        }
+
+        document.getElementById(element).style.display = 'block';
+        document.getElementById(catg_inpt).value = categ;
+    }
+
+    function bunt(checkbox, check, bnt_tam) {
+        if (document.getElementById(checkbox).checked == true) {
+            document.getElementById(check).style.backgroundColor = '#FFF';
+            document.getElementById(check).style.color = '#333333';
+            document.getElementById(bnt_tam).disabled = true;
+            document.getElementById(bnt_tam).value = '0';
+        } else {
+            document.getElementById(check).style.backgroundColor = '#FF6B18';
+            document.getElementById(check).style.color = '#FFF';
+            document.getElementById(bnt_tam).disabled = false;
+        }
+    }
+</script>
+
+
+{% footer %}
+<script src="{% static 'script/changeImg.js'%}" defer></script>
+{% endblock content %}

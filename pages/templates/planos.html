@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% block title %}Planos{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesCSS/stylePerfil.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+    <!-- HEADER -->
+    {% header request %}
+    <!-- HEADER -->
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="box-preco">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="card-preco">
+                                    <h1>NORMAL</h1>
+                                    <h2>R$120,00</h2>
+                                    <h3>por mês</h3>
+                                    <div>
+                                        <img src="{% static 'imagens/1.png' %}" alt="">
+                                        <p>Acesso a 1 coleção de roupas</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png' %}" alt="">
+                                        <p>Mais visibilidade na plataforma</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png' %}" alt="">
+                                        <p>Anuncios personalizados</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png' %}" alt="">
+                                        <p>Disponivel em breve</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png' %}" alt="">
+                                        <p>Disponivel em breve</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png' %}" alt="">
+                                        <p>Disponivel em breve</p>
+                                    </div>
+                                    <a href="{% url 'atualizar' 'normal' %}"><button>REGISTRE-SE</button></a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="card-preco">
+                                    <h1>PLUS</h1>
+                                    <h2>R$259,00</h2>
+                                    <h3>por mês</h3>
+                                    <div>
+                                        <img src="{% static 'imagens/1.png'%}" alt="">
+                                        <p>Acesso a 1 coleção de roupas</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/1.png'%}" alt="">
+                                        <p>Mais visibilidade na plataforma</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png'%}" alt="">
+                                        <p>Anuncios personalizados</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png'%}" alt="">
+                                        <p>Disponivel em breve</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png'%}" alt="">
+                                        <p>Disponivel em breve</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png'%}" alt="">
+                                        <p>Disponivel em breve</p>
+                                    </div>
+                                    <a href="{% url 'atualizar' 'plus'%}"><button>REGISTRE-SE</button></a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="card-preco">
+                                    <h1>PRO</h1>
+                                    <h2>R$367,00</h2>
+                                    <h3>por mês</h3>
+                                    <div>
+                                        <img src="{% static 'imagens/1.png'%}" alt="">
+                                        <p>Acesso a 1 coleção de roupas</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/1.png'%}" alt="">
+                                        <p>Mais visibilidade na plataforma</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/1.png'%}" alt="">
+                                        <p>Anuncios personalizados</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png'%}" alt="">
+                                        <p>Disponivel em breve</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png'%}" alt="">
+                                        <p>Disponivel em breve</p>
+                                    </div>
+                                    <div>
+                                        <img src="{% static 'imagens/2.png'%}" alt="">
+                                        <p>Disponivel em breve</p>
+                                    </div>
+                                    <a href="{% url 'atualizar' 'pro' %}"><button>REGISTRE-SE</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% footer %}
+
+
+{% endblock content %}
+

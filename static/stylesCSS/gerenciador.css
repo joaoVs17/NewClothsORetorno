@@ -1,0 +1,598 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,500;1,600;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,500;1,600;1,800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Inknut;
+}
+
+/* CORES EM VARIAVEIS */
+
+:root {
+    --LaranjaEscuro: #FD441B;
+    --LaranjaMedio: #FF6B18;
+    --LaranjaClaro: #FA861B;
+    --Amarelo: #FFA41C;
+    --AmareloClaro: #FFCF88;
+    --cinza: #595959;
+}
+
+/* layout */
+
+.l-container {
+    display: grid;
+    width: 100%;
+    grid-template-areas: '. ropa .';
+    grid-template-columns: 1fr 1000px 1fr;
+    margin-top: 50px;
+}
+
+.c-container-roupa {
+    grid-area: ropa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 1050px) {
+    .l-container {
+        grid-template-columns: 1fr 90% 1fr;
+    }
+}
+
+.c-container-roupa__ropa {
+    width: 400px;
+    height: 570px;
+    object-fit: cover;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.c-container-roupa__informacoes {
+    width: 500px;
+    height: 570px;
+    margin: auto;
+    padding-top: 40px;
+}
+
+@media (max-width: 600px) {
+    .c-container-roupa__ropa {
+        width: 100%;
+        height: auto;
+    }
+
+    .c-container-roupa__informacoes {
+        width: 100%;
+    }
+}
+
+.c-container-roupa__informacoes p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    text-transform: uppercase;
+    margin-top: 40px;
+}
+
+.c-container-ropa__loja {
+    display: flex;
+    align-items: center;
+}
+
+.c-container-ropa__loja a {
+    color: black;
+}
+
+.c-container-ropa__loja a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.c-container-ropa__loja a h1 {
+    text-align: left;
+    margin-left: 20px;
+    font-size: 50px;
+}
+
+.c-container-ropa__loja a img {
+    min-width: 117px;
+    min-height: 117px;
+    width: 117px;
+    height: 117px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    background-color: var(--LaranjaClaro);
+}
+
+
+.c-container-roupa__informacoes .preco {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: var(--LaranjaClaro);
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+
+
+
+
+/* minhas cleçoes */
+
+.l-container-colecoes {
+    display: grid;
+    grid-template-areas: 'gerenciador colections';
+    grid-template-columns: 400px 1fr;
+    padding-right: 30px;
+    padding-top: 40px;
+}
+
+.l-gerenciador {
+    grid-area: gerenciador;
+}
+
+.l-gerenciador a {
+    text-decoration: none;
+}
+
+.l-gerenciador a:hover {
+    text-decoration: none;
+}
+
+.l-colections {
+    grid-area: colections;
+    height: 100vh;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: left;
+    align-items: top;
+    flex-wrap: wrap;
+}
+
+.c-card-colection {
+    width: 217px;
+    height: 330px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #E8E8E8;
+    margin: 30px;
+    margin-bottom: 0px;
+}
+
+.c-card-colection img {
+    width: 217px;
+    height: 184px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.c-card-colection__infos {
+    padding: 15px;
+}
+
+.c-card-colection__infos h3 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height */
+
+    text-transform: capitalize;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+
+    color: #000000;
+}
+
+.c-card-colection__infos p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    /* identical to box height */
+
+    text-transform: capitalize;
+
+    color: #FF6B18;
+}
+
+
+
+
+
+
+.c-bnt-gerenciador {
+    width: 214px;
+    height: 50px;
+    margin-left: 23px;
+    border: none;
+    background: #FA861B;
+    border-radius: 100px;
+
+    margin-top: 15px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-transform: uppercase;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-bnt-gerenciador span {
+    font-size: 40px;
+    font-weight: 800;
+    margin-right: 10px;
+}
+
+.c-menu-gerenciador {
+    height: 35px;
+    width: 355px;
+    margin-top: 20px;
+
+    background: #E6E6E6;
+    border-radius: 0px 100px 100px 0px;
+    display: flex;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
+
+.c-menu-gerenciador p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    margin-left: 63px;
+    height: 5px;
+    /* identical to box height */
+
+    text-transform: uppercase;
+
+    color: #000000;
+}
+
+.c-menu-gerenciador p span {
+    margin-right: 30px;
+    font-family: Poppins;
+    color: #FA281B;
+    font-weight: 700;
+}
+
+.c-sub-menu-gerenciador {
+    width: 355px;
+    padding-left: 100px;
+    text-decoration: none;
+    color: #000000;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+.c-sub-menu-gerenciador a {
+    text-decoration: none;
+    color: #000000;
+    margin-top: 10px;
+}
+
+.c-sub-menu-gerenciador a:hover {
+    color: var(--LaranjaEscuro);
+}
+
+.c-sub-menu-gerenciador a li{
+    padding-top: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.c-menu-gerenciador:focus {
+    border: none;
+    outline: none;
+}
+
+.active-menu {
+    background-color: #FCC97E;
+}
+
+.bnt_tamanho_2 {
+    width: 25px;
+    height: 25px;
+    border: 2px solid var(--LaranjaClaro);
+    color: #333333;
+    background-color: white;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 5px;
+    font-family: Poppins;
+    transition: background-color 0.3s;
+}
+
+.tem {
+    background-color: var(--LaranjaClaro);
+    color: white;
+}
+
+.nao_tem {
+    color: var(--cinzaClaro);
+    border: 2px solid var(--cinzaClaro);
+}
+
+.c-barraBaixa {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c-barraBaixa p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    width: 100px;
+    height: 0;
+    /* identical to box height */
+
+    text-transform: capitalize;
+
+    color: #333333;
+}
+
+.c-bnts-barraBaixa {
+    display: flex;
+}
+
+.c-bnts-barraBaixa__edt {
+    width: 22px;
+    height: 22px;
+    padding: 0dpx;
+
+    border: none;
+    background: rgb(255, 189, 91);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.c-bnts-barraBaixa__edt img {
+    width: 11px;
+    height: 11px;
+    margin-top: -5px;
+}
+
+.c-bnts-barraBaixa__exc {
+    width: 22px;
+    height: 22px;
+    padding: 0px;
+
+    border: none;
+    background: #ff4036;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.c-bnts-barraBaixa__exc img {
+    width: 11px;
+    height: 11px;
+    margin: 0;
+    margin-top: -5px;
+}
+
+.c-bnt-addRopa {
+    position: absolute;
+    bottom: -220px;
+    right: 80px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: 1000;
+    border: none;
+    color: white;
+    background-color: var(--LaranjaMedio);
+    cursor: pointer;
+}
+
+
+
+
+
+
+.l-modal_add {
+    position: fixed;
+    top: 10vh;
+    height: 80vh;
+    width: 80%;
+    left: -100%;
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    padding: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.c-img-modal {
+    width: 260px;
+    height: 430px;
+    border: none;
+    border-radius: 10px;
+    background-color: #c8c8c8;
+    cursor: pointer;
+}
+
+.c-img-modal img {
+    width: 40%;
+    opacity: 30%;
+}
+
+.c-text-modal {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 5px;
+    /* identical to box height */
+
+    text-align: right;
+    text-transform: capitalize;
+
+    color: #000000;
+}
+
+.c-inpt-modal {
+    width: 100%;
+    height: 30px;
+    padding: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+
+    background: transparent;
+    border: 3px solid #FF6B18;
+    border-radius: 5px;
+}
+
+.c-inpt-modal:focus {
+    border: 3px solid #FF6B18;
+    outline: none;
+}
+
+.c-inpt-modal::placeholder {
+    color: #959595;
+}
+
+
+
+
+
+
+
+.img_pff {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.dt_pedido p {
+    font-size: 13px;
+    font-family: Poppins;
+    margin-bottom: 6px;
+}
+
+.dt_pedido p span {
+    font-family: Poppins;
+    color: var(--LaranjaMedio);
+    font-weight: 600;
+}
+
+.box-ropas-solicitadas {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card-rs {
+    width: 200px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.card-rs img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.card-rs p {
+    margin: 0;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 10px;
+    font-family: Poppins;
+}
+
+.card-rs span {
+    color: var(--LaranjaMedio);
+    font-family: Poppins;
+}
+
+
+
+
+
+.c-card-pacotes {
+    width: 280px;
+}
+
+.c-card-pacotes .img {
+    width: 100%;
+    display: flex;
+}
+
+.c-card-pacotes .img img {
+    width: 200px;
+    border-radius: 15px;
+}
+
+
+
+
+
+
+.c-categorias {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.c-categorias__card {
+    font-family: Poppins;
+    background-color: var(--LaranjaMedio);
+    margin-right: 20px;
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 130px;
+}
+
+.c-iimg-modal {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}

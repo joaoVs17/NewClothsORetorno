@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,500;1,600;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,500;1,600;1,800&display=swap');
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: Inknut;
+}
+
+:root {
+    --LaranjaEscuro: #FD441B;
+    --LaranjaMedio: #FF6B18;
+    --LaranjaClaro: #FA861B;
+    --Amarelo: #FFA41C;
+    --AmareloClaro: #FFCF88;
+    --cinza: #595959;
+}
+
+
+
+.c-pesquisa-filtro {
+    width: 100%;
+    background-color: #e9e9e9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.c-pesquisa-filtro h5 {
+    color: var(--LaranjaEscuro);
+    font-family: Poppins;
+    font-weight: 550;
+}
+
+.c-pesquisa-filtro a {
+    color: #333333;
+}
+
+.c-pesquisa-filtro a:hover {
+    color: var(--LaranjaMedio);
+    text-decoration: none;
+}
+
+.c-pesquisa-filtro a p {
+    font-size: 11px;
+    font-family: Poppins;
+    margin: 0;
+}
+
+.l-lojas-ropa-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.l-lojas-ropa-box-ropa {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.c-lojas-ropa-card {
+    width: 400px;
+    background-color: #e9e9e9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 26px 0px rgba(148, 148, 148, 1);
+}
+
+.c-lojas-ropa-card__img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.c-lojas-ropa-card__bnt {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    background-color: var(--LaranjaMedio);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.c-lojas-ropa-card-ropa {
+    width: 200px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+.c-lojas-ropa-card-ropa img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0px 0px 13px 0px rgba(148, 148, 148, 1);
+}
+
+.c-lojas-ropa-card-ropa a p {
+    margin-top: 20px;
+    font-size: 11px;
+    font-family: Poppins;
+    color: #333333;
+    text-decoration: none;
+}
+
+.c-lojas-ropa-card-ropa a:hover {
+    color: #333333;
+    text-decoration: none;
+}
+
+.c-lojas-ropa-card-ropa button {
+    margin-top: 0px;
+    font-size: 11px;
+    font-family: Poppins;
+    width: 100%;
+    height: 30px;
+    border: none;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 550;
+    border-radius: 5px;
+    background-color: var(--LaranjaMedio);
+    cursor: pointer;
+}

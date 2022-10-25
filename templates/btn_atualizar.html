@@ -1,0 +1,5 @@
+{% if logged %}
+    {% if not loja %}
+        <a href="{% url 'planos' %}"><button>Atualizar para conta cormecial</button></a>
+    {% endif %}
+{% endif %}

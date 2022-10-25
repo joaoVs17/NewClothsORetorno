@@ -1,0 +1,378 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tags %}
+{% block css %}<link rel="stylesheet" href="{% static 'stylesCSS/style.css' %}">{% endblock css %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+
+        <!-- //////////////////////////// CABEÇARIO //////////////////////////// -->
+
+        {% header request %}
+        <script>
+            link = document.getElementById('home')
+            link.classList.add('active')
+        </script>
+        <div class="anuncio-propaganda">
+            <img src="{% static 'imagens/Captura de Tela (9).png'%}" alt="">
+        </div>
+    
+        <!-- //////////////////////////// DESTAQUES //////////////////////////// -->
+    
+        <section>
+            <div class="container align-items-center">
+                <!-- TEXT destaques -->
+                <div class="row align-items-center">
+                    <div class="col-12 col-sm-12 col-mb-12 col-lg-5 col-xl-5">
+                        <h1>DESTAQUES</h1>
+                    </div>
+                </div>
+                <!-- row destaques -->
+                <div class="row">
+                    <!-- img destques -->
+                    <div class="col-12 col-sm-12 col-mb-12 col-lg-5 col-xl-5">
+                        <img class="detaques" src="{% static 'imagens/Descansando ao sol.webp'%}" alt="">
+                        <button class="bntROPA-mx">CONFIRA TODOS OS DESTAQUES</button><br><br>
+                    </div>
+                    <!-- coluns reoupas -->
+    
+                    <div class="col-12 col-sm-12 col-mb-12 col-lg-7 col-xl-7">
+                        <div class="row">
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a href=""><img class="ropa"
+                                        src="{% static 'imagens/91f7809806c940b2b5ded485a5d10528_w432_h576_q85.webp'%}" alt="">
+                                    <button class="bntROPA">confira agora</button><br></a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a href=""><img class="ropa"
+                                        src="https://images-submarino.b2w.io/produtos/4705474071/imagens/conjunto-plus-size-com-cinto-moda-plus-size-roupas-femininas/4705474126_1_large.jpg"
+                                        alt="">
+                                    <button class="bntROPA">confira agora</button><br></a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a href=""><img class="ropa"
+                                        src="https://digaspi.vteximg.com.br/arquivos/ids/403436-1000-1000/CROPPED-JEANS-MOLETINHO-96589-JEANS-P.jpg?v=637902928521470000"
+                                        alt="">
+                                    <button class="bntROPA">confira agora</button><br></a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a href=""><img class="ropa"
+                                        src="https://29664.cdn.simplo7.net/static/29664/sku/atacado-2a-linha-moda-masculina-2a-calcas-e-camisas-masculinas-100-pecas-de-segunda-linha--p-1542372289203.jpg"
+                                        alt="">
+                                    <button class="bntROPA">confira agora</button><br></a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a href=""><img class="ropa"
+                                        src="https://2.bp.blogspot.com/-aAGeX7MgSLI/WmjY4OOu1rI/AAAAAAAAL5o/f9IhPDwohq4LEWCSxykwuKGXV76ghSadACLcBGAs/s1600/combos%2Bde%2Broupas%2Bmasculinas%2Bverao%2Blook%2Bmasculino%2B%25284%2529.jpg"
+                                        alt="">
+                                    <button class="bntROPA">confira agora</button><br></a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a href=""><img class="ropa"
+                                        src="https://conteudo.imguol.com.br/c/entretenimento/7c/2021/04/09/look-de-moletom-da-marca-patbo-1618023032542_v2_450x600.jpg"
+                                        alt="">
+                                    <button class="bntROPA">confira agora</button><br></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <div class="anuncio-propaganda">
+            <img src="{% static 'imagens/Captura de Tela (10).png'%}" alt="">
+        </div>
+    
+        <!-- //////////////////////////// LOJAS //////////////////////////// -->
+    
+        <section>
+            <div class="container align-items-center">
+                <!-- TEXT destaques -->
+                <div class="row align-items-center">
+                    <div class="col-12 col-sm-12 col-mb-12 col-lg-7 col-xl-7">
+                        <h1>LOJAS CADASTRADAS</h1>
+                    </div>
+                </div>
+                <!-- row destaques -->
+                <div class="row">
+                    <!-- coluns lojas -->
+    
+                    <div class="col-12 col-sm-12 col-mb-12 col-lg-7 col-xl-7">
+                        <div class="row">
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a class="link_lojas" href="lojasC_loja.html">
+                                    <div class="boxLOJAS">
+                                        <img src="{% static 'imagens/Enyd6m-WMAA9wlZ.jpg' %}" alt="">
+                                        <h2>AMERICANAS</h2>
+                                        <p>Cacoal-RO</p>
+                                    </div>
+                                    <button class="bntROPA-ar">confira agora</button><br>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a class="link_lojas" href="lojasC_loja.html">
+                                    <div class="boxLOJAS">
+                                        <img src="https://4cpatiobatel.crmall.com/Api/store/image/dGh6MlVlRlp3SWR4UFFQZzcvVlhLUT09"
+                                            alt="">
+                                        <h2>ZARA</h2>
+                                        <p>Cacoal-RO</p>
+                                    </div>
+                                    <button class="bntROPA-ar">confira agora</button><br>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a class="link_lojas" href="lojasC_loja.html">
+                                    <div class="boxLOJAS">
+                                        <img src="https://play-lh.googleusercontent.com/99kIOo2NkDRAwBGQRfcq8-RP9x4PRKSxXlhiK519nxKF5ikbKhXdtgUrRI3UaSPTSwo=w240-h480-rw"
+                                            alt="">
+                                        <h2>SHEIN</h2>
+                                        <p>Cacoal-RO</p>
+                                    </div>
+                                    <button class="bntROPA-ar">confira agora</button><br>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a class="link_lojas" href="lojasC_loja.html">
+                                    <div class="boxLOJAS">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThfVwtzRGn7cFiG3RzmSPYk_1A28mNHEWf0sgXEpq5qtPI0t4g3LtdkVDM5MSImtjcBfc&usqp=CAU"
+                                            alt="">
+                                        <h2>ZATTINI</h2>
+                                        <p>Cacoal-RO</p>
+                                    </div>
+                                    <button class="bntROPA-ar">confira agora</button><br>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a class="link_lojas" href="lojasC_loja.html">
+                                    <div class="boxLOJAS">
+                                        <img src="https://e3ba6e8732e83984.cdn.gocache.net/uploads/image/file/740429/regular_197fad0067e6a038e303a52268f95128.png"
+                                            alt="">
+                                        <h2>DAFITI</h2>
+                                        <p>Cacoal-RO</p>
+                                    </div>
+                                    <button class="bntROPA-ar">confira agora</button><br>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-mb-4 col-lg-4 col-xl-4">
+                                <a class="link_lojas" href="lojasC_loja.html">
+                                    <div class="boxLOJAS">
+                                        <img src="https://sac0800telefone.com.br/wp-content/uploads/2018/10/sac-0800-posthaus.jpg"
+                                            alt="">
+                                        <h2>PHOSTAUS</h2>
+                                        <p>Cacoal-RO</p>
+                                    </div>
+                                    <button class="bntROPA-ar">confira agora</button><br>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- img lojas -->
+                    <div class="col-12 col-sm-12 col-mb-12 col-lg-5 col-xl-5">
+                        <img class="detaques" src="{% static 'imagens/Loja de segunda mão .webp' %}" alt="">
+                        <a href="lojasCadastradas.html"><button class="bntROPA-mx">CONFIRA TODAS AS LOJAS</button></a>
+                        <br><br>
+                    </div>
+    
+                </div>
+            </div>
+        </section>
+    
+        <div class="anuncio-propaganda">
+            <img src="{% static 'imagens/Captura de Tela (12).png'%}" alt="">
+        </div>
+    
+        <!-- //////////////////////////// COLEÇÔES //////////////////////////// -->
+    
+        <section>
+            <div class="container align-items-center">
+                <!-- TEXT colections -->
+                <div class="row align-items-center">
+                    <div class="col-12 col-sm-12 col-mb-12 col-lg-5 col-xl-5">
+                        <h1>COLEÇÕES EM ALTA</h1>
+                    </div>
+                </div>
+                <!-- row colections -->
+                <div class="row">
+                    <!-- img colections -->
+                    <div class="col-12 col-sm-12 col-mb-12 col-lg-5 col-xl-5">
+                        <img class="detaques"
+                            src="{% static 'imagens/desenvolvimento-de-colecao-de-moda-como-fazer-maior-eficiencia-audaces.jpg'%}" alt="">
+                        <button class="bntROPA-mx">CONFIRA TODAS AS COLEÇÕES</button><br><br>
+                    </div>
+                    <!-- coluns colections -->
+    
+                    <div class="col-12 col-sm-12 col-mb-12 col-lg-7 col-xl-7">
+                        <div class="row">
+                            <div class="col-4">
+                                <a href="lojasC_loja.html"><img class="colecao"
+                                        src="https://img.ahazou.com/tr:iodpr-2.0,oh-675,ow-380,oiar-1-1,w-380,oi-full-watermark-1x_SpmxT34_Q.png,oit-true/ahz-posts/c9045dab-583b-46a6-9f1f-60e400080216/midia/stories-da244890-d39f-4abe-b912-07a55ac51e8e.png"
+                                        alt=""></a>
+                                <a href="lojasC_loja.html"><button class="bntROPA">confira agora</button></a>
+                            </div>
+    
+                            <div class="col-4">
+                                <a href="lojasC_loja.html"><img class="colecao"
+                                        src="https://cdn.awsli.com.br/1768/1768048/arquivos/banner-mobile-verao.jpeg"
+                                        alt=""></a>
+                                <a href="lojasC_loja.html"><button class="bntROPA">confira agora</button></a>
+                            </div>
+    
+                            <div class="col-4">
+                                <a href="lojasC_loja.html"><img class="colecao" src="{% static 'imagens/Design sem nome.png'%}" alt=""></a>
+                                <a href="lojasC_loja.html"><button class="bntROPA">confira agora</button></a>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </section>
+        
+        <div class="anuncio-propaganda">
+            <img src="{% static 'imagens/arte-do-blog-origens.webp'%}" alt="">
+        </div>
+    
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <br>
+                                <h1>POSSUI UMA LOJA?</h1>
+                                <h3 class="h3">registre-se agora</h3>
+                            </div>
+                        </div>
+                        <div class="box-preco">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                    <div class="card-preco">
+                                        <h1>NORMAL</h1>
+                                        <h2>R$120,00</h2>
+                                        <h3>por mês</h3>
+                                        <div>
+                                            <img src="{% static 'imagens/1.png'%}" alt="">
+                                            <p>Acesso a 1 coleção de roupas</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Mais visibilidade na plataforma</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Anuncios personalizados</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Disponivel em breve</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Disponivel em breve</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Disponivel em breve</p>
+                                        </div>
+                                        <a href="tranformAccount.html"><button>REGISTRE-SE</button></a>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                    <div class="card-preco">
+                                        <h1>PLUS</h1>
+                                        <h2>R$259,00</h2>
+                                        <h3>por mês</h3>
+                                        <div>
+                                            <img src="{% static 'imagens/1.png'%}" alt="">
+                                            <p>Acesso a 5 coleção de roupas</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/1.png'%}" alt="">
+                                            <p>Mais visibilidade na plataforma</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Anuncios personalizados</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Disponivel em breve</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Disponivel em breve</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Disponivel em breve</p>
+                                        </div>
+                                        <a href="tranformAccount.html"><button>REGISTRE-SE</button></a>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                    <div class="card-preco">
+                                        <h1>PRO</h1>
+                                        <h2>R$367,00</h2>
+                                        <h3>por mês</h3>
+                                        <div>
+                                            <img src="{% static 'imagens/1.png'%}" alt="">
+                                            <p>Acesso a 15 coleção de roupas</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/1.png'%}" alt="">
+                                            <p>Mais visibilidade na plataforma</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/1.png'%}" alt="">
+                                            <p>Anuncios personalizados</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Disponivel em breve</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Disponivel em breve</p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'imagens/2.png'%}" alt="">
+                                            <p>Disponivel em breve</p>
+                                        </div>
+                                        <a href="tranformAccount.html"><button>REGISTRE-SE</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <div class="anuncio-propaganda">
+            <img src="{% static 'imagens/Captura de Tela (14).png'%}" alt="">
+        </div>
+    
+        <!-- //////////////////////////// COLEÇÔES //////////////////////////// -->
+    
+        {% footer %}
+    
+        <script src="{% static 'script/js.js'%}"></script>
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+{% endblock content %}
+
+
+
+
+
+
