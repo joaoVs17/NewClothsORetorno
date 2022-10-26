@@ -14,7 +14,9 @@ from pedidos.models import Item, Pedido
 from roupas.models import Categoria, Roupa
 
 from django.views.decorators.csrf import csrf_exempt
+import uuid
 # Create your views here.
+
 
 def get_POST_form_fields(request, fields):
     dicionario = {}
@@ -203,10 +205,25 @@ class LojaVer(View):
 
 class RoupaVer(View):
     def get(self, request, cidade, loja, roupa):
+
+        # Caso o usuário não esteja conectado.
         context = {}
         context['loja'] = Loja.objects.get(nome_loja=loja)
         context['roupa'] = Roupa.objects.get(pk=roupa)
-        return render(request, 'ropa.html', context)
+
+        if(request.user.is_authenticated):
+            print('Conectado')
+            context['user_id'] = request.user.pk
+            return render(request, 'ropa.html', context)
+        else:
+
+            # Usuário Anônimo.
+            # Gerar um ID único para o usuário não conectado!
+            id_unico = uuid.uuid4()
+            print(id_unico)
+            context['user_id'] = id_unico
+            return render(request, 'ropa.html', context)
+
     def post(self, request):
         pass
 
@@ -218,9 +235,11 @@ class EmBreve(View):
 
 class MeusPacotes(View):
     def get(self, request):
+        context = {}
         if request.user.is_authenticated:
-            pedido = Pedido.objects.filter()
-        return render (request, 'meusPacotes.html')
+            pedidos = Pedido.objects.filter(usuario_pedinte=request.user)
+            context['pedidos'] = pedidos
+        return render (request, 'meusPacotes.html', context)
 
     def post(self, request):
 
@@ -229,28 +248,44 @@ class MeusPacotes(View):
         quantidade = request.POST.get('product_qnt')
         tamanho = request.POST.get('product_size')
         loja_id = request.POST.get('loja_id')
+        user_id = request.POST.get('user_id')
         
         roupa = Roupa.objects.get(pk=id)
 
         item = Item.objects.create(
+            user_id=user_id,
             roupa=roupa,
             tamanho=tamanho,
             quantidade=quantidade,
         )
 
-        print(item)
+        # Criar Pedido
+        pedido = Pedido.objects.create_pedido(
+            user_id=user_id,
+            loja_id=loja_id,
+            status = 'NF'
+        )
+        
+        # Deve ter ido
+        pedido.add_item(item)
         
         return HttpResponse('Salve')
 
 class MeusPedidos(View):
     def get(self, request):
-        return render (request, 'pedidos.html')
+        context = {}
+        pedidos = Pedido.objects.filter(loja=request.user.loja).order_by('data_pedido')
+        context['pedidos'] = pedidos
+        return render (request, 'pedidos.html', context)
     def post(self, request):
         pass
 
 class VerPedido(View):
-    def get(self, request):
+    def get(self, request, pk):
         #é só para lojas
-        return render(request, 'pedido.html')
+        context = {}
+        pedido = Pedido.objects.get(pk=pk)
+        context['pedido'] = pedido
+        return render(request, 'pedido.html', context)
     def post(self, request):
         pass
