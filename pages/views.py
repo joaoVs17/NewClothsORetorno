@@ -259,16 +259,8 @@ class MeusPacotes(View):
             quantidade=quantidade,
         )
 
-        # Criar Pedido
-        pedido = Pedido.objects.create_pedido(
-            user_id=user_id,
-            loja_id=loja_id,
-            status = 'NF'
-        )
-        
-        # Deve ter ido
-        pedido.add_item(item)
-        
+        Pedido.objects.adicionar_item(item=item, user_id=user_id, loja_id=loja_id)
+
         return HttpResponse('Salve')
 
 class MeusPedidos(View):
